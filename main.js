@@ -28,23 +28,24 @@ client.on('message', async message => {
             'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE',
         }
     }).then(function (response) {
-      console.log(response)
+      console.log(response.data[0])
       if(response.data[0] != null){
+        // setInterval(client.sendMessage(message.from, 'we are trying hard now.'), 2000);
          axios.post(
-           'https://sryms0dnpssf9w-8080.proxy.runpod.net/chat',
+           'http://192.168.1.50:8085/chat',
            '',
          {
             params: {
                 'msg': message.body,
-                'database_name': 'test_data',
-                'collection': 'table16'
+                'database_name': 'de_carton'
            },
            headers: {
              'accept': 'application/json',
              'content-type': 'application/x-www-form-urlencoded'
            }
          }).then(function (data){
-             console.log(data.data.result);
+             console.log(String(data));
+             
              message.reply(data.data.result);
              clearInterval();
          }).catch(function (errors){
