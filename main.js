@@ -95,7 +95,7 @@ client.on("message", async (message) => {
       if (response.data[0] != null) {
         // setInterval(client.sendMessage(message.from, 'we are trying hard now.'), 2000);
         axios
-          .post("http://192.168.1.50:8085/chat", "", {
+          .post("https://balanced-wren-relaxing.ngrok-free.app/chat", "", {
             params: {
               msg: message.body,
               database_name: "de_carton",
