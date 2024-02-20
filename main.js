@@ -112,6 +112,7 @@ client.on("message", async (message) => {
             clearInterval();
           })
           .catch(function (errors) {
+            client.sendMessage(message.from, "Sorry, we are having problem on retriving data, please try again");
             console.log(errors);
           });
 
@@ -121,6 +122,7 @@ client.on("message", async (message) => {
       }
     })
     .catch(function (error) {
+      client.sendMessage(message.from, "Sorry, we are having problem on retriving your user verification, please try again");
       console.log(error);
     });
 
